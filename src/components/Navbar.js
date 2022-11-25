@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 //MUI
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,19 +14,40 @@ import MenuItem from "@mui/material/MenuItem";
 //React Router
 import { Link } from "react-router-dom";
 
-const pages = [
-  {
-    title: "Lost Pets",
-    link: "",
-  },
-  {
-    title: "Lost Pet Form",
-    link: "/form",
-  },
-];
+function Navbar({ lostPets, setLostPets }) {
 
-function ResponsiveAppBar() {
+  React.useEffect(() => {
+    getLostPets();
+  },[]);
+  
+  async function getLostPets() {
+    console.log("hello")
+    try{
+      const res = await axios.get(`http://localhost:5000/lostpets/`);
+      setLostPets(res.data);
+    }catch(err) {
+      console.log(err);
+    }
+  }
+
+  //MUI
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const pages = [
+    {
+      id:1,
+      title: "Lost Pets",
+      link: "/lostpets",
+      click:getLostPets,
+      state:lostPets
+    },
+    {
+      id:2,
+      title: "Lost Pet Form",
+      link: "/form",
+      click:"",
+      state:""
+    },
+  ];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -87,8 +109,8 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <Link to={page.link} style={{ textDecoration:"none", color:"black" }}>
-                  <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                <Link to={page.link} onClick={page.click} state={page.state} style={{ textDecoration:"none", color:"black" }}>
+                  <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.title}</Typography>
                   </MenuItem>
                 </Link>
@@ -116,9 +138,9 @@ function ResponsiveAppBar() {
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={page.link} style={{ textDecoration:"none" }}>
+              <Link to={page.link} onClick={page.click} state={page.state} style={{ textDecoration:"none" }}>
                 <Button
-                  key={page.title}
+                  key={page.id}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
@@ -132,4 +154,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Navbar;

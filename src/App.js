@@ -1,14 +1,18 @@
 import "./App.css";
+import React from "react";
 //React Router
 import { Route, Routes } from "react-router-dom";
 //Components
 import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
+import LostPetGrid from "./components/LostPet/LostPetGrid";
 import LostPetForm from "./components/LostPetForm";
 //MUI
 import { createTheme, colors, ThemeProvider } from "@mui/material";
 
 function App() {
+  const [lostPets, setLostPets] = React.useState([])
+
   const theme = createTheme({
     palette: {
       common: {
@@ -39,9 +43,20 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Navbar />
+        <Navbar 
+          lostPets={lostPets}
+          setLostPets={setLostPets}
+        />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route 
+            path="/lostpets"
+            element={
+                <LostPetGrid 
+                  lostPets={lostPets}
+                  setLostPets={setLostPets}
+                />
+            } />
           <Route path="/form" element={<LostPetForm />} />
         </Routes>
       </div>
