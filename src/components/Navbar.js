@@ -37,14 +37,12 @@ function Navbar({ lostPets, setLostPets }) {
       title: "Lost Pets",
       link: "/lostpets",
       click:getLostPets,
-      state:lostPets
     },
     {
       id:2,
       title: "Lost Pet Form",
       link: "/form",
       click:"",
-      state:""
     },
   ];
 
@@ -108,7 +106,7 @@ function Navbar({ lostPets, setLostPets }) {
               }}
             >
               {pages.map((page) => (
-                <Link to={page.link} onClick={page.click} state={page.state} style={{ textDecoration:"none", color:"black" }}>
+                <Link to={page.link} onClick={page.click} style={{ textDecoration:"none", color:"black" }}>
                   <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.title}</Typography>
                   </MenuItem>
@@ -137,7 +135,7 @@ function Navbar({ lostPets, setLostPets }) {
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={page.link} onClick={page.click} state={page.state} style={{ textDecoration:"none" }}>
+              <Link to={page.link} onClick={page.click} style={{ textDecoration:"none" }}>
                 <Button
                   key={page.id}
                   onClick={handleCloseNavMenu}
