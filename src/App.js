@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 //Components
 import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
+import LostPetForm from "./components/LostPetForm";
 //MUI
 import { createTheme, colors, ThemeProvider } from "@mui/material";
 
@@ -41,6 +42,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/form" element={<LostPetForm />} />
         </Routes>
       </div>
     </ThemeProvider>
