@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
 import LostPetGrid from "./components/LostPet/LostPetGrid";
+import LostPetPage from "./components/LostPet/LostPetPage";
 import LostPetForm from "./components/LostPetForm";
 //MUI
 import { createTheme, colors, ThemeProvider } from "@mui/material";
@@ -57,6 +58,7 @@ function App() {
                   setLostPets={setLostPets}
                 />
             } />
+          <Route path="/lostpets/:id" element={<LostPetPage />} />
           <Route path="/form" element={<LostPetForm />} />
         </Routes>
       </div>

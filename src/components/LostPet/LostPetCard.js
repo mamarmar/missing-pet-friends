@@ -1,3 +1,8 @@
+import * as React from "react";
+import axios from "axios";
+//React Router
+import { Link } from "react-router-dom";
+//MUI
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -6,10 +11,31 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 //Images
 import dog from "../../images/dog.jpeg";
 
-export default function LostPetCard({ petName, city, email}) {
+export default function LostPetCard({ id, petName, city, email}) {
+    const [currentPet, setCurrentPet] = React.useState();
+
+    React.useEffect(() => {
+        handleClick();
+    },[]);
+
+    //Go to pet page
+    async function handleClick() {
+        try {
+            const res = await axios.get(`http://localhost:5000/lostpets/${id}`);
+            setCurrentPet(res.data[0]);
+        }catch(err) {
+            console.log(err)
+        }
+    }
   return (
     <Card sx={{ width: 200, height: 350 }}>
-      <CardActionArea>
+      <Link
+        component={CardActionArea}
+        to={`/lostpets/${id}`}
+        style={{ textDecoration: "none", color: "black" }}
+        onClick={handleClick}
+        state={currentPet}
+      >
         <CardMedia
           component="img"
           height="160"
@@ -20,12 +46,17 @@ export default function LostPetCard({ petName, city, email}) {
           <Typography gutterBottom variant="h5" component="div">
             {petName}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {petName} got lost in {city}
+          <Typography variant="body2" >
+            {petName} got lost in {city.split(",")[0]}
           </Typography>
         </CardContent>
-      </CardActionArea>
-      <CardActions>
+      </Link>
+      <CardActions
+        sx={{
+            display:"flex",
+            justifyContent:"center"
+        }}
+      >
         <Button variant="contained">
             Contact Owner
         </Button>

@@ -19,9 +19,8 @@ function Navbar({ lostPets, setLostPets }) {
   React.useEffect(() => {
     getLostPets();
   },[]);
-  
+
   async function getLostPets() {
-    console.log("hello")
     try{
       const res = await axios.get(`http://localhost:5000/lostpets/`);
       setLostPets(res.data);
