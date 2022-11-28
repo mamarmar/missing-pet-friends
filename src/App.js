@@ -7,12 +7,18 @@ import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
 import LostPetGrid from "./components/LostPet/LostPetGrid";
 import LostPetPage from "./components/LostPet/LostPetPage";
-import LostPetForm from "./components/LostPetForm";
+import LostPetForm from "./components/LostPet/LostPetForm";
 //MUI
 import { createTheme, colors, ThemeProvider } from "@mui/material";
 
 function App() {
-  const [lostPets, setLostPets] = React.useState([])
+  const [lostPets, setLostPets] = React.useState([]);
+  const [popUp, setPopUp] = React.useState({
+    isOpen: false,
+    petName: "",
+    toEmail: "",
+    fromEmail: "",
+  });
 
   const theme = createTheme({
     palette: {
@@ -44,21 +50,24 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Navbar 
-          lostPets={lostPets}
-          setLostPets={setLostPets}
-        />
+        <Navbar lostPets={lostPets} setLostPets={setLostPets} />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route 
+          <Route
             path="/lostpets"
             element={
-                <LostPetGrid 
-                  lostPets={lostPets}
-                  setLostPets={setLostPets}
-                />
-            } />
-          <Route path="/lostpets/:id" element={<LostPetPage />} />
+              <LostPetGrid
+                lostPets={lostPets}
+                setLostPets={setLostPets}
+                popUp={popUp}
+                setPopUp={setPopUp}
+              />
+            }
+          />
+          <Route
+            path="/lostpets/:id"
+            element={<LostPetPage popUp={popUp} setPopUp={setPopUp} />}
+          />
           <Route path="/form" element={<LostPetForm />} />
         </Routes>
       </div>

@@ -17,7 +17,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 //Form Validation
 import { useForm } from "react-hook-form";
 //Greek cities
-import citiesArray from "../json-files/cities.json";
+import citiesArray from "../../json-files/cities.json";
 
 const theme = createTheme();
 
@@ -138,7 +138,6 @@ export default function LostPetForm() {
                     required: "Required field",
                     validate: (val) => {
                       if (Date.parse(val) > Date.parse(today)) {
-                        console.log(Date.parse(val), Date.parse(today));
                         return "Please select a valid date";
                       }
                     },

@@ -3,8 +3,9 @@ import Grid from "@mui/material/Grid";
 //Components
 import FilterBar from "./FilterBar";
 import LostPetCard from "./LostPetCard";
+import MessagePopUp from "../MessagePopUp";
 
-function LostPetGrid({ lostPets, setLostPets }) {
+function LostPetGrid({ lostPets, setLostPets, popUp, setPopUp }) {
   //Map over the incoming data and create an LostPetCard for every document
   const allLostPets = lostPets.map((pet) => {
     return (
@@ -15,8 +16,11 @@ function LostPetGrid({ lostPets, setLostPets }) {
           petName={pet.petName}
           city={pet.city}
           email={pet.email}
+          setPopUp={setPopUp}
         />
+        
       </Grid>
+      
     );
   });
 
@@ -37,6 +41,7 @@ function LostPetGrid({ lostPets, setLostPets }) {
       >
         {allLostPets}
       </Grid>
+      {popUp.isOpen && <MessagePopUp popUp={popUp} setPopUp={setPopUp}/>}
     </Box>
   );
 }

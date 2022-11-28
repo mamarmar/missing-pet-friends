@@ -1,3 +1,4 @@
+import React from "react";
 //React Router
 import { useLocation } from "react-router-dom";
 //MUI
@@ -8,13 +9,33 @@ import Button from "@mui/material/Button";
 import PlaceIcon from "@mui/icons-material/Place";
 //Image
 import dog from "../../images/dog.jpeg";
+//Components
+import MessagePopUp from "../MessagePopUp";
 
-function LostPetPage() {
+function LostPetPage({ popUp, setPopUp}) {
   const location = useLocation();
   const lostPet = location.state;
 
+  function changeDateFormat(string) {
+    const shortened = string.split("T")[0];
+    const date = new Date(shortened).toString();
+    return date.substring(4, 15);
+  }
+
+  function openMessagePopUp() {
+    setPopUp((prevValue) => {
+      return {
+        ...prevValue,
+        isOpen:true,
+        petName:lostPet.petName,
+        toEmail:lostPet.email
+      }
+    });
+  }
+
   return (
     <Stack direction="row" justifyContent="center">
+      {popUp.isOpen && <MessagePopUp popUp={popUp} setPopUp={setPopUp}/>}
       <Stack
         spacing={2}
         sx={{
@@ -30,6 +51,7 @@ function LostPetPage() {
         >
           {lostPet.petName}
         </Typography>
+        
         <Box
           sx={{
             backgroundImage: `url(${dog})`,
@@ -40,9 +62,20 @@ function LostPetPage() {
             borderRadius: 1,
           }}
         ></Box>
-        <Button fullWidth variant="contained">
+        <Typography
+          variant="p"
+          sx={{
+            color:"grey.500",
+            fontSize:14,
+            textAlign:"right"
+          }}
+        >
+          Missing since {changeDateFormat(lostPet.date)}
+        </Typography>
+        <Button fullWidth variant="contained" onClick={openMessagePopUp}>
           Contact Owner
         </Button>
+        
         <Stack direction="row" alignItems="center" justifyContent="start">
           <PlaceIcon />
           <Typography>{lostPet.city}</Typography>

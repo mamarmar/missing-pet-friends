@@ -11,7 +11,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 //Images
 import dog from "../../images/dog.jpeg";
 
-export default function LostPetCard({ id, petName, city, email}) {
+export default function LostPetCard({ id, petName, city, email, setPopUp}) {
     const [currentPet, setCurrentPet] = React.useState();
 
     React.useEffect(() => {
@@ -27,6 +27,18 @@ export default function LostPetCard({ id, petName, city, email}) {
             console.log(err)
         }
     }
+
+    function openMessagePopUp() {
+      setPopUp((prevValue) => {
+        return {
+          ...prevValue,
+          isOpen:true,
+          petName:petName,
+          toEmail:email
+        }
+      });
+    }
+
   return (
     <Card sx={{ width: 200, height: 350 }}>
       <Link
@@ -57,7 +69,7 @@ export default function LostPetCard({ id, petName, city, email}) {
             justifyContent:"center"
         }}
       >
-        <Button variant="contained">
+        <Button variant="contained" onClick={openMessagePopUp}>
             Contact Owner
         </Button>
       </CardActions>
