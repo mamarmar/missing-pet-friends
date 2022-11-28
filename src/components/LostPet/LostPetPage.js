@@ -13,7 +13,7 @@ function LostPetPage() {
         <Box>
             <Stack>
                 <Typography>
-                    {lostPet.petName}
+                    {lostPet.description}
                 </Typography>
             </Stack>
         </Box>

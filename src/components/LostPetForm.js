@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+// import Textarea from '@mui/joy/Textarea';
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -172,22 +173,33 @@ export default function LostPetForm() {
                 />
               </Grid>
               <Grid item xs={12}>
-              <TextField
+                <TextField
                   required
                   fullWidth
                   type="email"
                   id="email"
                   label="Email Address"
                   autoComplete="email"
-                  {...register("email",{ 
-                                required: "Required field",
-                                pattern: {
-                                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                  message: "Please provide a valid email"
-                                }
-                              }, )}
+                  {...register("email", {
+                    required: "Required field",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Please provide a valid email",
+                    },
+                  })}
                   error={!!errors?.email}
                   helperText={errors?.email ? errors.email.message : null}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  multiline
+                  rows={3}
+                  fullWidth
+                  id="description"
+                  label="Description"
+                  autoComplete="description"
+                  { ...register("description") }
                 />
               </Grid>
             </Grid>

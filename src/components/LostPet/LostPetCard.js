@@ -47,7 +47,7 @@ export default function LostPetCard({ id, petName, city, email}) {
             {petName}
           </Typography>
           <Typography variant="body2" >
-            {petName} got lost in {city.split(",")[0]}
+            Went missing in {city.split(",")[0]}
           </Typography>
         </CardContent>
       </Link>
