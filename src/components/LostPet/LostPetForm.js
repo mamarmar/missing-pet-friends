@@ -43,7 +43,7 @@ export default function LostPetForm() {
   async function createLostPetListing(data) {
     data.city = cityValue;
     try {
-      await axios.post(`http://localhost:5000/lostpets/new`, data);
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/lostpets/new`, data);
       setUnsuccessfulSubmit(false);
       setSuccessfulSubmit(true);
       setTimeout(() => {

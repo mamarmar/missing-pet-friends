@@ -21,7 +21,7 @@ export default function LostPetCard({ id, petName, city, email, setPopUp}) {
     //Go to pet page
     async function handleClick() {
         try {
-            const res = await axios.get(`http://localhost:5000/lostpets/${id}`);
+            const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/lostpets/${id}`);
             setCurrentPet(res.data[0]);
         }catch(err) {
             console.log(err)

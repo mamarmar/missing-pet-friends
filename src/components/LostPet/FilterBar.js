@@ -35,7 +35,7 @@ function FilterBar({ setLostPets }) {
     if (data.city) {
       try {
         const res = await axios.get(
-          `http://localhost:5000/lostpets/filtered`,
+          `${process.env.REACT_APP_SERVER_URL}/lostpets/filtered`,
           config
         );
         if (res.data.length > 0) {
@@ -51,7 +51,7 @@ function FilterBar({ setLostPets }) {
   //Clear filters and render all pets
   async function clearFilters() {
     try {
-      const res = await axios.get(`http://localhost:5000/lostpets/`);
+      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/lostpets/`);
       setLostPets(res.data);
     } catch (err) {
       console.lof(err);

@@ -22,7 +22,7 @@ function Navbar({ lostPets, setLostPets }) {
 
   async function getLostPets() {
     try{
-      const res = await axios.get(`http://localhost:5000/lostpets/`);
+      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/lostpets/`);
       setLostPets(res.data);
     }catch(err) {
       console.log(err);
