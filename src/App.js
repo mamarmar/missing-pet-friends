@@ -23,13 +23,16 @@ function App() {
   const theme = createTheme({
     palette: {
       common: {
-        black: "#131b23",
-        white: "#FAF8F7",
+        black: "#160f29",
+        white: "#FFFFFF",
       },
       primary: {
-        main: colors.deepOrange[500],
+        main: "#F55D3E",
         light: colors.deepOrange[300],
         dark: colors.deepOrange[700],
+      },
+      secondary: {
+        main: "#06d6a0"
       },
       error: {
         main: colors.red[500],
@@ -39,7 +42,7 @@ function App() {
       },
     },
     typography: {
-      fontFamily: "Poppins",
+      fontFamily: "Roboto, Roboto Condensed",
       fontWeightLight: 300,
       fontWeightRegular: 400,
       fontWeightMedium: 500,
