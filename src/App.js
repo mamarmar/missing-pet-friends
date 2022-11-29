@@ -28,11 +28,6 @@ function App() {
       },
       primary: {
         main: "#F55D3E",
-        light: colors.deepOrange[300],
-        dark: colors.deepOrange[700],
-      },
-      secondary: {
-        main: "#06d6a0"
       },
       error: {
         main: colors.red[500],

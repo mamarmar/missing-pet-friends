@@ -13,13 +13,11 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import Stack from "@mui/material/Stack";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 //Form Validation
 import { useForm } from "react-hook-form";
 //Greek cities
 import citiesArray from "../../json-files/cities.json";
 
-const theme = createTheme();
 
 export default function LostPetForm() {
   const [successfulSubmit, setSuccessfulSubmit] = React.useState(false);
@@ -59,7 +57,6 @@ export default function LostPetForm() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -213,6 +210,5 @@ export default function LostPetForm() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 }

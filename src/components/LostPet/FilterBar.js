@@ -6,13 +6,10 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 //Form Validation
 import { useForm } from "react-hook-form";
 //Greek cities
 import citiesArray from "../../json-files/cities.json";
-
-const theme = createTheme();
 
 function FilterBar({ setLostPets }) {
   //City value state for MUI Autocomplete
@@ -59,7 +56,6 @@ function FilterBar({ setLostPets }) {
   }
 
   return (
-    <ThemeProvider theme={theme}>
       <Stack
         component="form"
         onSubmit={handleSubmit(filterPets)}
@@ -80,13 +76,16 @@ function FilterBar({ setLostPets }) {
           onChange={(e, newValue) => {
             setCityValue(newValue);
           }}
+          sx= {{
+            textAlign:"left"
+          }}
           renderInput={(params) => (
             <TextField
               {...params}
               label="City"
               {...register("city")}
               sx={{
-                minWidth: { md: 200 },
+                minWidth: { md: 200 }
               }}
             />
           )}
@@ -99,6 +98,7 @@ function FilterBar({ setLostPets }) {
             sx={{
               mt: 3,
               mb: 2,
+              bgcolor:"primary.main"
             }}
           >
             Apply
@@ -120,7 +120,6 @@ function FilterBar({ setLostPets }) {
           </Button>
         </Tooltip>
       </Stack>
-    </ThemeProvider>
   );
 }
 

@@ -8,6 +8,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import PlaceIcon from "@mui/icons-material/Place";
+import Stack from "@mui/material/Stack";
 //Images
 import dog from "../../images/dog.jpeg";
 
@@ -55,12 +57,25 @@ export default function LostPetCard({ id, petName, city, email, setPopUp}) {
           alt="dog"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" sx={{ textTransform:"uppercase"}}>
             {petName}
           </Typography>
-          <Typography variant="body2" >
-            Went missing in {city.split(",")[0]}
+          <Stack
+            variant="body2"
+            direction="row"
+            alignItems="center"
+            sx= {{
+              color:"grey.500",
+              mb:0,
+              alignSelf:"center"
+            }}
+          >
+            <PlaceIcon/>
+          <Typography >
+            {city.split(",")[0]}
           </Typography>
+          </Stack>
+          
         </CardContent>
       </Link>
       <CardActions
