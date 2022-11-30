@@ -16,7 +16,7 @@ import PetsIcon from "@mui/icons-material/Pets";
 //React Router
 import { Link } from "react-router-dom";
 
-function Navbar({ lostPets, setLostPets }) {
+function Navbar({ setLostPets }) {
   React.useEffect(() => {
     getLostPets();
   }, []);

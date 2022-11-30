@@ -1,12 +1,30 @@
+import * as React from "react";
+import axios from "axios";
 //MUI
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+//React Router
+import { Link } from "react-router-dom";
 //Background image
 import backgroundImage from "../images/background.jpeg";
 
-function Homepage() {
+function Homepage({ setLostPets }) {
+  React.useEffect(() => {
+    getLostPets();
+  }, []);
+
+  async function getLostPets() {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/lostpets/`
+      );
+      setLostPets(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <Stack
       direction={{ xs: "column", md: "row" }}
@@ -14,7 +32,7 @@ function Homepage() {
       alignItems="center"
       gap={15}
       sx={{
-        px: { xs: 5, md: 10, xl: 15 }
+        px: { xs: 5, md: 10, xl: 15 },
       }}
     >
       <Stack
@@ -38,12 +56,16 @@ function Homepage() {
           justifyContent="space-between"
           gap={3}
         >
-          <Button fullWidth variant="contained">
-            I have found a pet
-          </Button>
-          <Button fullWidth variant="outlined">
-            I have lost my pet
-          </Button>
+          <Link to="/lostpets" style={{ textDecoration: "none", width: "100%" }}>
+            <Button fullWidth variant="contained">
+              I have found a pet
+            </Button>
+          </Link>
+          <Link to="/form" style={{ textDecoration: "none", width: "100%" }}>
+            <Button fullWidth variant="outlined">
+              I have lost my pet
+            </Button>
+          </Link>
         </Stack>
       </Stack>
       <Box

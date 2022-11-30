@@ -49,9 +49,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Navbar lostPets={lostPets} setLostPets={setLostPets} />
+        <Navbar setLostPets={setLostPets} />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Homepage setLostPets={setLostPets} />} />
           <Route
             path="/lostpets"
             element={
