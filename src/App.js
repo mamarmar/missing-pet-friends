@@ -3,8 +3,9 @@ import React from "react";
 //React Router
 import { Route, Routes } from "react-router-dom";
 //Components
-import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Homepage from "./components/Homepage";
 import LostPetGrid from "./components/LostPet/LostPetGrid";
 import LostPetPage from "./components/LostPet/LostPetPage";
 import LostPetForm from "./components/LostPet/LostPetForm";
@@ -27,7 +28,7 @@ function App() {
         white: "#FFFFFF",
       },
       primary: {
-        main: "#F55D3E",
+        main: "#5158BB",
       },
       error: {
         main: colors.red[500],
@@ -68,6 +69,7 @@ function App() {
           />
           <Route path="/form" element={<LostPetForm />} />
         </Routes>
+        <Footer />
       </div>
     </ThemeProvider>
   );

@@ -12,7 +12,7 @@ import dog from "../../images/dog.jpeg";
 //Components
 import MessagePopUp from "../MessagePopUp";
 
-function LostPetPage({ popUp, setPopUp}) {
+function LostPetPage({ popUp, setPopUp }) {
   const location = useLocation();
   const lostPet = location.state;
 
@@ -26,20 +26,20 @@ function LostPetPage({ popUp, setPopUp}) {
     setPopUp((prevValue) => {
       return {
         ...prevValue,
-        isOpen:true,
-        petName:lostPet.petName,
-        toEmail:lostPet.email
-      }
+        isOpen: true,
+        petName: lostPet.petName,
+        toEmail: lostPet.email,
+      };
     });
   }
 
   return (
     <Stack direction="row" justifyContent="center">
-      {popUp.isOpen && <MessagePopUp popUp={popUp} setPopUp={setPopUp}/>}
+      {popUp.isOpen && <MessagePopUp popUp={popUp} setPopUp={setPopUp} />}
       <Stack
         spacing={2}
         sx={{
-          marginTop: 5,
+          mb: 5,
           width: 300,
         }}
       >
@@ -47,11 +47,12 @@ function LostPetPage({ popUp, setPopUp}) {
           variant="h1"
           sx={{
             fontSize: 50,
+            textAlign: "center",
           }}
         >
           {lostPet.petName}
         </Typography>
-        
+
         <Box
           sx={{
             backgroundImage: `url(${dog})`,
@@ -65,9 +66,9 @@ function LostPetPage({ popUp, setPopUp}) {
         <Typography
           variant="p"
           sx={{
-            color:"grey.500",
-            fontSize:14,
-            textAlign:"right"
+            color: "grey.500",
+            fontSize: 14,
+            textAlign: "right",
           }}
         >
           Missing since {changeDateFormat(lostPet.date)}
@@ -75,7 +76,7 @@ function LostPetPage({ popUp, setPopUp}) {
         <Button fullWidth variant="contained" onClick={openMessagePopUp}>
           Contact Owner
         </Button>
-        
+
         <Stack direction="row" alignItems="center" justifyContent="start">
           <PlaceIcon />
           <Typography>{lostPet.city}</Typography>

@@ -58,31 +58,27 @@ export default function LostPetForm() {
   }
 
   return (
-    <Stack
-      direction={{xs: "column", md: "row"}}
-      alignItems="center"
-      sx={{
-        mt:8
-      }}
-    >
+    <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
       <Container component="main" maxWidth="xs">
         <Typography
           variant="h1"
           sx={{
-            fontSize: {xs:32, md:36},
-            fontWeight:"medium",
-            textAlign:{xs:"center", md:"left"},
-            mb:3
+            fontSize: { xs: 32, md: 36 },
+            fontWeight: "medium",
+            textAlign: { xs: "center", md: "left" },
+            mb: 3,
           }}
         >
           Have you lost your pet?
         </Typography>
         <Typography
           sx={{
-            textAlign:{xs:"center", md:"left"},
+            textAlign: { xs: "center", md: "left" },
           }}
         >
-         Fill in the form as accurately as possible. If your pet gets spotted, you will receive an email by the person who located it with further details.
+          Fill in the form as accurately as possible. If your pet gets spotted,
+          you will receive an email by the person who located it with further
+          details.
         </Typography>
       </Container>
 
@@ -93,7 +89,7 @@ export default function LostPetForm() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            mt:{xs:5}
+            mt: { xs: 5 },
           }}
         >
           <Typography component="h1" variant="h5">
