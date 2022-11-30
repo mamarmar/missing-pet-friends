@@ -57,8 +57,8 @@ Missing Pet Friends is a full-stack [MERN](https://www.mongodb.com/languages/mer
 
 Some of the features to be implemented in the future are:
 
-- Allow users to upload their own images (profile picture, offered item images, etc)
-- Include a Google Map with a marker for every offered/requsted item
+- Sign-up & protected routes
+- Allow users to upload their pet's images 
 
 ## Screenshots
 <img width="400px" src="./screenshots/2-min.png">
