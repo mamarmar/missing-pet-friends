@@ -4,7 +4,6 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-// import Textarea from '@mui/joy/Textarea';
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -17,7 +16,6 @@ import Stack from "@mui/material/Stack";
 import { useForm } from "react-hook-form";
 //Greek cities
 import citiesArray from "../../json-files/cities.json";
-
 
 export default function LostPetForm() {
   const [successfulSubmit, setSuccessfulSubmit] = React.useState(false);
@@ -41,7 +39,10 @@ export default function LostPetForm() {
   async function createLostPetListing(data) {
     data.city = cityValue;
     try {
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/lostpets/new`, data);
+      await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/lostpets/new`,
+        data
+      );
       setUnsuccessfulSubmit(false);
       setSuccessfulSubmit(true);
       setTimeout(() => {
@@ -57,14 +58,42 @@ export default function LostPetForm() {
   }
 
   return (
+    <Stack
+      direction={{xs: "column", md: "row"}}
+      alignItems="center"
+      sx={{
+        mt:8
+      }}
+    >
+      <Container component="main" maxWidth="xs">
+        <Typography
+          variant="h1"
+          sx={{
+            fontSize: {xs:32, md:36},
+            fontWeight:"medium",
+            textAlign:{xs:"center", md:"left"},
+            mb:3
+          }}
+        >
+          Have you lost your pet?
+        </Typography>
+        <Typography
+          sx={{
+            textAlign:{xs:"center", md:"left"},
+          }}
+        >
+         Fill in the form as accurately as possible. If your pet gets spotted, you will receive an email by the person who located it with further details.
+        </Typography>
+      </Container>
+
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            mt:{xs:5}
           }}
         >
           <Typography component="h1" variant="h5">
@@ -195,7 +224,7 @@ export default function LostPetForm() {
                   id="description"
                   label="Description"
                   autoComplete="description"
-                  { ...register("description") }
+                  {...register("description")}
                 />
               </Grid>
             </Grid>
@@ -210,5 +239,6 @@ export default function LostPetForm() {
           </Box>
         </Box>
       </Container>
+    </Stack>
   );
 }
