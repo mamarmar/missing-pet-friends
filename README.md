@@ -1,5 +1,5 @@
 <p align="center">
-<img width="400px" src="./screenshots/logo.png">
+<img width="400px" src="./screenshots/logo-min.png">
 </p>
 
 <h1 align="center">A web app for reuniting lost pets with their owners</h1>
@@ -29,7 +29,7 @@ More info about the technologies can be found <a href="https://github.com/mamarm
 ## Description
 Missing Pet Friends is a full-stack [MERN](https://www.mongodb.com/languages/mern-stack-tutorial) web application that helps pet owners reunite with their missing pets.
 
-<img width="900px" src="./screenshots/1.png">
+<img width="900px" src="./screenshots/1-min.png">
 
 ## Technologies Used (Extended)
 
@@ -60,9 +60,14 @@ Some of the features to be implemented in the future are:
 - Allow users to upload their own images (profile picture, offered item images, etc)
 - Include a Google Map with a marker for every offered/requsted item
 
+## Screenshots
+<img width="400px" src="./screenshots/2-min.png">
+<img width="400px" src="./screenshots/3-min.png">
+<img width="400px" src="./screenshots/4-min.png">
+<img width="400px" src="./screenshots/5-min.png">
+
 ## Special Thanks To
 
-- [Yasmeen Othman](https://github.com/YasmeenOthman), for her guidance and continuous support throughout this fascinating journey.
 - All the students and the tutors at the [Social Hackers Academy](https://github.com/SocialHackersAcademy), for creating a nice little community of passionate people offering their best for each other.
 
 
