@@ -63,10 +63,11 @@ export default function LostPetForm() {
         <Typography
           variant="h1"
           sx={{
-            fontSize: { xs: 32, md: 36 },
+            fontSize: { xs: 30, md: 36 },
             fontWeight: "medium",
             textAlign: { xs: "center", md: "left" },
             mb: 3,
+            mt:{xs: 10, md: 0}
           }}
         >
           Have you lost your pet?
@@ -100,7 +101,7 @@ export default function LostPetForm() {
             <Stack
               direction="row"
               alignItems="center"
-              gap={1}
+              spacing={1}
               sx={{ color: "success.main", mt: 2 }}
             >
               <CheckCircleOutlineIcon />
@@ -114,7 +115,7 @@ export default function LostPetForm() {
             <Stack
               direction="row"
               alignItems="center"
-              gap={1}
+              spacing={1}
               sx={{ color: "error.main", mt: 2 }}
             >
               <ErrorOutlineIcon />
