@@ -33,7 +33,7 @@ Missing Pet Friends is a full-stack [MERN](https://www.mongodb.com/languages/mer
 
 <img width="900px" src="./screenshots/1-min.png">
 
-The server-side code cane be found [here](https://github.com/mamarmar/missing-pet-friends-server).
+The server-side code can be found [here](https://github.com/mamarmar/missing-pet-friends-server).
 
 ## Technologies Used (Extended)
 
